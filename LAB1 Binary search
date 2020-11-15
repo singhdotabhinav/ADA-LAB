@@ -1,0 +1,40 @@
+#include<stdio.h>
+
+int fnBinarySearch(int ar[],int key,int low,int high);
+
+int main()
+{
+	int i,n,key;
+	int ar[20],ipos,low,high;
+	printf("\nEnter the Size of array\n");
+	scanf("%d",&n);
+	printf("\nEnter the array\n");
+	for(i=0;i<n;i++)
+	scanf("%d",&ar[i]);
+	printf("\nEnter the key\n");
+	scanf("%d",&key);
+	ipos=fnBinarySearch(ar,key,0,n-1);
+	if(ipos>-1)
+	printf("\nThe no is at:%d \n",ipos+1);
+	else
+	printf("Not found");
+	
+return 0;
+}
+
+int fnBinarySearch(int ar[],int key,int low,int high)
+{
+	int mid;
+	if(low<=high){
+	mid=(low+high)/2;
+	if(key==ar[mid])
+	return mid;
+	else if(key<ar[mid])
+	return fnBinarySearch(ar,key,low,mid-1); 
+	else if(key>ar[mid])
+	return fnBinarySearch(ar,key,mid+1,high); 
+	}
+	else
+	return -1;
+	
+}
